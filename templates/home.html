@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+        <div class="container">
+            <h1 class="firsth1">Welcome to</h1>
+            <h1>EscapeReality Stays</h1>
+            <div class="button-container">
+                <a href="/signup" class="btn">Sign Up</a>
+                <a href="/login" class="btn">Login</a>
+            </div>
+        </div>
+
+
+    </body>
+</html>

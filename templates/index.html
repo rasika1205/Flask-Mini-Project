@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Listings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1><i><u>Hotel Listings</u></i></h1>
+  <div>
+    <a href="{{ url_for('new_hotel') }}" class="add-hotel-btn">+ Add New Hotel</a>
+    <a href="{{ url_for('home') }}" class="home-button">Go to Home Page</a>
+  </div>
+  <div class="container">
+    {% for name, data in hotels.items() %}
+    <div class="card">
+      <a href="/show/{{ name }}">
+        <img class="image" src="{{ data[5] }}" alt="{{ name }}">
+      </a>
+      <h2>{{ name }}</h2>
+      <p><strong>Description:</strong> {{ data[0] }}</p>
+      <p><strong>Price:</strong> ₹{{ data[1] }}</p>
+      <p><strong>Location:</strong> {{ data[2] }}</p>
+      <p><strong>Rating:</strong> {{ data[3] }}/5</p>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

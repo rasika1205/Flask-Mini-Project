@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ hotel_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style1.css') }}">
+</head>
+<body>
+      <div class="container">
+        <h1>{{ hotel_name }}</h1>
+        <img src="{{ image_url }}" alt="{{ hotel_name }}">
+        <p><strong>Description:</strong> {{ description }}</p>
+        <p><strong>Price:</strong> ${{ price }} per night</p>
+        <p><strong>Location:</strong> {{ location }}</p>
+        <p><strong>Rating:</strong> ⭐{{ rating }}</p>
+        <a href="/list_hotels" class="back-button">Back to Hotel List</a>
+        <div class="buttons">
+            <form action="{{ url_for('delete_hotel', hotel_name=hotel_name) }}" method="post" class="delete-form">
+                <button type="submit" class="delete-btn">Delete Hotel</button>
+            </form>
+            <a href="{{ url_for('edit_hotel_form', hotel_name=hotel_name) }}" class="edit-btn">Edit Hotel</a>
+        </div>
+      </div>
+
+      <div class="comment-section">
+          <h3><b><u>Comments</u></b></h3>
+          <ul class="comment-list">
+                {% for c in hotels[hotel_name][4] %}
+                    <li>{{ c.text }} — <strong>Rating:</strong> ⭐{{ c.rating }}/5</li>
+                {% else %}
+                    <li>No comments yet.</li>
+                {% endfor %}
+          </ul>
+          <h3>Add a Comment</h3>
+          <form method="POST" action="{{ url_for('add_comment', hotel_name=hotel_name) }}">
+                <textarea name="comment" placeholder="Your comment" required></textarea><br>
+                <label for="rating">Rating:</label>
+                <input type="number" name="rating" min="0" max="5" step="0.1" required><br>
+                <button type="submit">Submit</button>
+          </form>
+
+      </div>
+
+
+</body>
+</html>
