@@ -16,7 +16,7 @@ A lightweight **full-stack web application** built using **Flask**, designed to 
 * [Getting Started](#-getting-started)
 * [Project Structure](#-project-structure)
 * [Routes Overview](#-routes-overview)
-* [Screenshots (Optional)](#-screenshots-optional)
+* [Future Enchnacements](#future-enhancements)
 * [Limitations & Notes](#-limitations--notes)
 * [License](#-license)
 
